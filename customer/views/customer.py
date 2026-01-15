@@ -5,7 +5,7 @@ from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_400_BAD_RE
 from customer.models import Customer
 from customer.serializers import CustomerSerializer
 
-class CustomerListCreateView(generics.GenericAPIView):
+class CustomerListCreateView(generics.ListCreateAPIView):
     serializer_class = CustomerSerializer
 
     def retrieve_customer_data(self):
@@ -25,7 +25,7 @@ class CustomerListCreateView(generics.GenericAPIView):
         )
 
     def create(self, request, *args, **kwargs):
-        nic = request.POST.get("nic")
+        nic = request.data.get("nic")
 
         if Customer.objects.filter(nic=nic).exists():
             return Response(
