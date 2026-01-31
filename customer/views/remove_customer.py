@@ -3,12 +3,12 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND
 
 from customer.models import Customer
-from customer.serializers.customer import CustomerSerializer
+from customer.serializers import CustomerSerializer
 
-class RemoveCustomerView(generics.UpdateAPIView):
+class RemoveCustomerView(generics.DestroyAPIView):
     serializer_class = CustomerSerializer
 
-    def update(self, request, *args, **kwargs):
+    def destroy(self, request, *args, **kwargs):
         nic = request.data.get("nic")
 
         if not Customer.objects.filter(nic=nic).exists():
@@ -24,8 +24,6 @@ class RemoveCustomerView(generics.UpdateAPIView):
         customer = Customer.objects.get(nic=nic)
         customer.deleted = True
         customer.save()
-
-        serializer = self.get_serializer(customer)
 
         return Response(
             {

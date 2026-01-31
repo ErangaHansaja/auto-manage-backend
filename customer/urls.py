@@ -1,6 +1,5 @@
 from django.urls import path
-from customer.views.customer import CustomerListCreateView
-from customer.views.remove_customer import RemoveCustomerView
+from customer.views import CustomerListCreateView, RemoveCustomerView
 
 urlpatterns = [
     # endpoints will be added later

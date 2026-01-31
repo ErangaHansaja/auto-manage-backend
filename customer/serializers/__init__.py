@@ -1,1 +1,1 @@
-from .customer import CustomerSerializer
+from .customer_serializer import CustomerSerializer
