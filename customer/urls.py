@@ -1,10 +1,8 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from customer.views import CustomerViewSet
-
-router = DefaultRouter()
-router.register("", CustomerViewSet, basename="customer")
+from django.urls import path
+from customer.views import CustomerListCreateView, RemoveCustomerView
 
 urlpatterns = [
-    path("", include(router.urls)),
+    # endpoints will be added later
+    path('register', CustomerListCreateView.as_view(), name='customer-list'),
+    path('delete', RemoveCustomerView.as_view(), name='delete-customer'),
 ]
