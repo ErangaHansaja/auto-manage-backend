@@ -1,5 +1,10 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from vehicle.views import VehicleViewSet
+
+router = DefaultRouter()
+router.register("", VehicleViewSet, basename="vehicle")
 
 urlpatterns = [
-    # endpoints will be added later
+    path("", include(router.urls)),
 ]
