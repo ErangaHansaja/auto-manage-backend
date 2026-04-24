@@ -1,6 +1,5 @@
 from django.apps import AppConfig
 
-
-class MechanicAssistConfig(AppConfig):
+class AIAssistantConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'mechanic_assist'
+    name = 'ai_assistant'

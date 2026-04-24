@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'customer',
     'vehicle',
     'health',
-
+    'ai_assistant',
+    'service'
 ]
 
 MIDDLEWARE = [
