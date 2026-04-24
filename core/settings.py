@@ -149,7 +149,6 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "utils.pagination.StandardPagination",
     "PAGE_SIZE": 10,
 }
-
 from datetime import timedelta
 
 SIMPLE_JWT = {
