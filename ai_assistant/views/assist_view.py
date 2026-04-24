@@ -5,7 +5,6 @@ from django.http import StreamingHttpResponse
 from ai_assistant.ai_agents.gemini import Gemini
     
 class AssistView(APIView):
-    ai_agent = Gemini()
     
     def post(self, request, *args, **kwargs):
         customer_request = request.data.get('customer_request')
@@ -24,8 +23,8 @@ class AssistView(APIView):
                 },
                 status=HTTP_400_BAD_REQUEST
             )
-        
-        ai_response = self.ai_agent.get_response(customer_request)
+        ai_agent = Gemini()
+        ai_response = ai_agent.get_response(customer_request)
 
         return Response(
             {
