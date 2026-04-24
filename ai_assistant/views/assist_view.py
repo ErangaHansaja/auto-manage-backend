@@ -7,8 +7,8 @@ from ai_assistant.ai_agents.gemini import Gemini
 class AssistView(APIView):
     ai_agent = Gemini()
     
-    def get(self, request, *args, **kwargs):
-        customer_request = request.query_params.get('customer_request')
+    def post(self, request, *args, **kwargs):
+        customer_request = request.data.get('customer_request')
 
         # return StreamingHttpResponse(
         #     self.ai_agent.stream_response(customer_request),
@@ -17,13 +17,21 @@ class AssistView(APIView):
 
         if not customer_request:
             return Response(
-                {"error": "customer_request query parameter is required."},
+                {
+                    "success":  False,
+                    "message": "Please provide a valid customer request in the request body.",
+                    "data": None
+                },
                 status=HTTP_400_BAD_REQUEST
             )
         
         ai_response = self.ai_agent.get_response(customer_request)
 
         return Response(
-            {"response": ai_response},
+            {
+                "success": True,
+                "message": "AI response generated successfully",
+                "response": ai_response
+            },
             status=HTTP_200_OK
         )
