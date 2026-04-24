@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'customer',
     'vehicle',
     'health',
-
+    'ai_assistant',
+    'service'
 ]
 
 MIDDLEWARE = [
@@ -140,3 +141,7 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.AllowAny",
     ]
 }
+
+
+# AI Agent Configuration
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
