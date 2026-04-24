@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'health',
     'user',
     'employee',
-
+    'ai_assistant',
+    'service',
 ]
 
 MIDDLEWARE = [
@@ -157,3 +158,6 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = "user.User"
+
+# AI Agent Configuration
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
