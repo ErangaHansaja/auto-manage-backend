@@ -1,2 +1,0 @@
-from .customer import CustomerListCreateView
-from .remove_customer import RemoveCustomerView
